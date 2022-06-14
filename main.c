@@ -6,8 +6,8 @@
  * 
  * Return: Always 0.
  */
-int main (int argc, char **argv)
+int main (int argc, char **argv, char **env)
 {
-    cmd(argc, argv);
+    cmd(argc, argv, env);
     return (0);
 }

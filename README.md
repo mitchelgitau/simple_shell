@@ -5,7 +5,7 @@ Team project
 | -- | -- |
 ||v 0.0.1-beta | Test code that passes the Betty checks [✔️] |
 |v 0.1 | Implement a UNIX command line interpreter [✔️]|
-|v 0.2 | Handle command lines with arguments|
+|v 0.2 | Handle command lines with arguments [✔️]|
 |v 0.3 | Handle the (PATH)|
 |v 0.4 | Implement the (exit) built-in, that exits the shell|
 |v 0.5 | Implement the (env) built-in, that prints the current environment|

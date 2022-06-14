@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * get_env - get input with env from stream
- * simple version
+ * advanced version
  * 
  * Return : Always 0
  */

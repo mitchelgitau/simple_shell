@@ -36,7 +36,8 @@ int cmd(int ac, char **av, char **env)
     {
         printf("(%u) A star is born !!\n", parent_pid);
         printf("%s", PROMPT);
-        get_env();
+        print_env(ac, av, env);
+        /* get_env(); */
     }
     else
     {

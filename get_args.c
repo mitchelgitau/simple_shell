@@ -14,6 +14,7 @@ int get_args()
     char **token_str = malloc(sizeof(char) * MAXLEN);
     FILE *instream = NULL;
     char *delim = " ,;\t";
+    char *exit_str = "exit";
 
     instream = fdopen(STDIN, "r");
     if (instream == NULL)
@@ -27,18 +28,17 @@ int get_args()
     {
         while((*token_str = strtok(*lineptr++, delim)) != NULL)
         {
-            printf("%s\n", token_str[0]);
             printf("%s", PROMPT);
-
+            if (strncmp(*token_str, exit_str, strlen(exit_str)) == 0)
+                _exit(EXIT_SUCCESS);
+        
             if (stat(token_str[0], &statbuf) != 0)
             {
                 perror("Stat Error");
-                return(EXIT_FAILURE);
             }
             if(execve(token_str[0], token_str, NULL) == -1)
             {
                 perror("Execution Error");
-                return (EXIT_FAILURE);
             }
         }
     }

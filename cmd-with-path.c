@@ -11,9 +11,9 @@ int cmd(int ac, char **av, char **env)
     int wstate;
     pid_t parent_pid, child_pid;
 
-    if (ac != 1)
+    if (ac != 2)
     {
-        printf("Usage Error: %s\n", av[0]);
+        printf("Usage Error: %s <PATH> \n", av[0]);
         return (EXIT_FAILURE);
     }
 
@@ -36,7 +36,8 @@ int cmd(int ac, char **av, char **env)
     {
         printf("(%u) A star is born !!\n", parent_pid);
         printf("%s", PROMPT);
-        get_path();
+        print_path(ac, av, env);
+        /* get_path(); */
     }
     else
     {

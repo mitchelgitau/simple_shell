@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * get_path - get input with path from stream
- * advanced
+ * advanced version
  * 
  * Return : Always 0
  */
@@ -63,5 +63,6 @@ int get_path()
     free(absolute_token);
     free(token_str);
     free(lineptr);
+    fclose(instream);
     return (EXIT_SUCCESS);
 }

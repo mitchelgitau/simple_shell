@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * switch_args - get input with args from stream
- * basic
+ * simple version
  * 
  * Return : Always 0
  */

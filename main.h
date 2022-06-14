@@ -17,6 +17,7 @@ int get_input(void);
 int switch_args(int ac, char **av);
 int get_args();
 int get_path();
+int print_path(int ac, char **av, char **env);
 int cmd(int ac, char **av, char **env);
 
 #endif /* MAIN_H */

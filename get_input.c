@@ -27,5 +27,6 @@ int get_input(void)
     }
 
     free(lineptr);
+    fclose(instream);
     return (EXIT_SUCCESS);
 }

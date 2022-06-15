@@ -9,7 +9,7 @@ Team project
 |v 0.3 | Handle the (PATH)[✔️]|
 |v 0.4 | Implement the (exit) built-in, that exits the shell[✔️]|
 |v 0.5 | Implement the (env) built-in, that prints the current environment[✔️]|
-| -- | -- |
+|v 0.6 | Run tests |
 |v 1.0 | Final Simple setup release|
 
 | Version | Description |
@@ -25,5 +25,5 @@ Team project
 |v 1.9 | Handle variables replacement|
 |v 1.10 | Handle comments (#)|
 |v 1.11 | Handle a file as a command line argument|
-| -- | -- |
+|v 1.12 | Run tests |
 |v 2.0 | Final Advanced setup release|

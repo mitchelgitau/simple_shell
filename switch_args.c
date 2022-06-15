@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * switch_args - get input with args from stream
  * simple version

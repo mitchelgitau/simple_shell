@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * get_path - get input with path from stream
  * advanced version

@@ -1,17 +1,26 @@
 #include "shell.h"
 /**
- * fetch_token - get token from getline
- * @instream : input stream
- *
- * Return: Always 0
+ * fetch_token - get tokens from stream
+ * 
+ * Return: 0 if successful; 1 otherwise
  */
-int fetch_token(FILE *instream)
+int fetch_token()
 {
-	struct stat statbuf;
+	FILE *instream = NULL;
 	int numchar;
-	size_t len = MAXLEN;
-	char **lineptr = NULL, **token_str = NULL, *delim = " ,;\t";
-	char **absolute_token = NULL, *working_dir = NULL, *exit_str = "exit";
+	size_t i = 0, len = MAXLEN;
+	char **lineptr = malloc(sizeof(char) * MAXLEN);
+	char **token_str = NULL;
+	char **absolute_token = NULL;
+	char *exit_str = "exit";
+	char *delim = " ,;\t";
+
+	instream = fdopen(STDIN, "r");
+	if (instream == NULL)
+	{
+		perror("Fdopen Error");
+		return (EXIT_FAILURE);
+	}
 
 	while ((numchar = getline(lineptr, &len, instream)) != -1
 			&& numchar != EOF)
@@ -21,30 +30,15 @@ int fetch_token(FILE *instream)
 			if (strncmp(*token_str, exit_str, strlen(exit_str)) == 0)
 				_exit(EXIT_SUCCESS);
 
-			if ((realpath(*token_str, *absolute_token)) == NULL)
-			{
-				perror("Realpath Error");
-				return (EXIT_FAILURE);
-			}
+			*absolute_token = which_command(*token_str);
 
 			printf("%s\n", absolute_token[0]);
 			printf("%s", PROMPT);
 
-			if (absolute_token[1] == NULL)
-				strcat(*absolute_token, working_dir);
-
-			if (stat(absolute_token[0], &statbuf) != 0)
-			{
-				perror("Stat Error");
-				return (EXIT_FAILURE);
-			}
-
-			if (execve(absolute_token[0], absolute_token, NULL) == -1)
-			{
-				perror("Execution Error");
-				return (EXIT_FAILURE);
-			}
+			stat_exec(absolute_token, i);
 		}
 	}
+	free(lineptr);
+	fclose(instream);
 	return (EXIT_SUCCESS);
 }

@@ -4,19 +4,14 @@
  * @ac : arguments count
  * @av : arguments array
  * @env : environment array
- * Return: Always 0
+ * 
+ * Return: 0 if successful; 1 otherwise
  */
 int cmd(int ac, char **av, char **env)
 {
 	int wstate;
 	pid_t parent_pid, child_pid;
-
-	if (ac != 2)
-	{
-		printf("Usage Error: %s <PATH> \n", av[0]);
-		return (EXIT_FAILURE);
-	}
-
+	
 	if (env[0] == NULL)
 	{
 		printf("Env Error: %s\n", env[0]);
@@ -36,7 +31,7 @@ int cmd(int ac, char **av, char **env)
 	{
 		printf("(%u) A star is born !!\n", parent_pid);
 		printf("%s", PROMPT);
-		fetch_args(av, env);
+		switch_mode(ac, av, env);
 	}
 	else
 	{

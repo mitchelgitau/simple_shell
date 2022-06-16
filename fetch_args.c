@@ -35,13 +35,11 @@ int fetch_args(char **av, char **env)
 
 	if (av[1] == NULL)
 		fetch_token(instream);
-	else
+	
+	if (execve(av[0], av, NULL) == -1)
 	{
-		if (execve(av[0], av, NULL) == -1)
-		{
-			perror("Execution Error");
-			return (EXIT_FAILURE);
-		}
+		perror("Execution Error");
+		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
 }

@@ -10,7 +10,7 @@
 int switch_mode(int ac, char **av, char **env)
 {
 	int i = 1, a, e;
-	
+
 	if (ac > 1)
 	{
 		a = stat_exec(av, i);

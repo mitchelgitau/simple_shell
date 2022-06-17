@@ -12,11 +12,11 @@ char *which_command(char *command)
 	char *token_path = NULL;
 	char *delim = ":=";
 	char *path_env = "PATH";
-	
+
 	if ((*path_loc = getenv(path_env)) == NULL)
 	{
 		perror("Get PATH Error");
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	while ((token_path = strtok(*path_loc++, delim)) != NULL)
 	{
@@ -24,6 +24,6 @@ char *which_command(char *command)
 	}
 	printf("%s\n", found_command);
 	printf("%s", PROMPT);
-	
-	return(found_command);
+
+	return (found_command);
 }

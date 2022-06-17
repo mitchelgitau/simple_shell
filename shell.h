@@ -26,7 +26,7 @@
 #define MAXLOGSIZE 4096
 #define MAXBUFREAD 1024
 
-int fetch_token();
+int fetch_token(void);
 int switch_mode(int ac, char **av, char **env);
 int stat_exec(char **str, int i);
 char *which_command(char *command);

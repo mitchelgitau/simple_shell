@@ -1,10 +1,10 @@
 #include "shell.h"
 /**
  * fetch_token - get tokens from stream
- * 
+ *
  * Return: 0 if successful; 1 otherwise
  */
-int fetch_token()
+int fetch_token(void)
 {
 	FILE *instream = NULL;
 	int numchar;

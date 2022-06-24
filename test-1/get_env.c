@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * get_env - get input with env from stream
  * advanced version

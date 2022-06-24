@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * get_input - get input from stream
  * basic and without arguments

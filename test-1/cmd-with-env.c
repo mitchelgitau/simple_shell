@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * cmd - UNIX command line interpretor
  * @ac : arguments count
@@ -6,7 +6,7 @@
  * 
  * Return : Always 0
  */
-int cmd(int ac, char **av)
+int cmd(int ac, char **av, char **env)
 {
     int wstate;
     pid_t parent_pid, child_pid;
@@ -14,6 +14,12 @@ int cmd(int ac, char **av)
     if (ac != 1)
     {
         printf("Usage Error: %s\n", av[0]);
+        return (EXIT_FAILURE);
+    }
+
+    if(env[0] == NULL)
+    {
+        printf("Env Error: %s\n", env[0]);
         return (EXIT_FAILURE);
     }
 
@@ -30,8 +36,8 @@ int cmd(int ac, char **av)
     {
         printf("(%u) A star is born !!\n", parent_pid);
         printf("%s", PROMPT);
-        /* switch_args(ac, av); */
-        get_args(ac, av);
+        print_env(ac, av, env);
+        /* get_env(); */
     }
     else
     {

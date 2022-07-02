@@ -3,6 +3,10 @@
  * main - check the code
  * @argc : arguments count
  * @argv : arguments array
+<<<<<<< HEAD
+=======
+ * @env : environment array
+>>>>>>> nick
  *
  * Return: Always 0.
  */

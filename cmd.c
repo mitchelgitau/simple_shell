@@ -4,6 +4,10 @@
  * @ac : arguments count
  * @av : arguments array
  * @env : environment array
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> nick
  * Return: 0 if successful; 1 otherwise
  */
 int cmd(int ac, char **av, char **env)
@@ -13,7 +17,7 @@ int cmd(int ac, char **av, char **env)
 
 	if (env[0] == NULL)
 	{
-		printf("Env Error: %s\n", env[0]);
+		perror("Env Error");
 		return (EXIT_FAILURE);
 	}
 

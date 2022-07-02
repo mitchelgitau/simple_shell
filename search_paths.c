@@ -1,19 +1,24 @@
 #include "shell.h"
 /**
+<<<<<<< HEAD
  * search_paths - locate a directory path with the command
  * @token_path : directory path
  * @command : command
  *
  * Return: command found ; 1 otherwise
+=======
+ * search_paths - search a directory path listing the command
+ * @path_list : list of path directories
+ * @command : shorthand command to search
+ *
+ * Return: 0 if successful; 1 otherwise
+>>>>>>> nick
  */
-char *search_paths(char *token_path, char *command)
+int search_paths(char **path_list, char *command)
 {
-	int i = 0, scan_count;
-	DIR *open_dir = NULL;
-	const struct dirent **read_dir, **command_dir;
-	struct dirent ***scan_list;
-	char *path_command = NULL;
+	int i = 0;
 
+<<<<<<< HEAD
 	if ((realpath(command, (char *)*command_dir)) == NULL)
 	{
 		perror("Realpath Error");
@@ -50,4 +55,15 @@ char *search_paths(char *token_path, char *command)
 	printf("%s", PROMPT);
 
 	return (path_command);
+=======
+	while (path_list[i++] != NULL)
+	{
+		if ((_scandir(command, path_list[i])) == EXIT_FAILURE)
+		{
+			perror("Scandir Error");
+			return (EXIT_FAILURE);
+		}
+	}
+	return (EXIT_SUCCESS);
+>>>>>>> nick
 }

@@ -26,11 +26,12 @@
 #define MAXLOGSIZE 4096
 #define MAXBUFREAD 1024
 
-int fetch_token();
+int fetch_token(void);
 int switch_mode(int ac, char **av, char **env);
 int stat_exec(char **str, int i);
-char *which_command(char *command);
-char *search_paths(char *token_path, char *command);
+int which_command(char *command);
+int search_paths(char **path_list, char *command);
+int _scandir(char *command, char *dir);
 int cmd(int ac, char **av, char **env);
 
 void exit_handle(char **u_tokns, char *line);

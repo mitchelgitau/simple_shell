@@ -1,17 +1,16 @@
 #include "shell.h"
 /**
  * fetch_token - get tokens from stream
- * 
+ *
  * Return: 0 if successful; 1 otherwise
  */
-int fetch_token()
+int fetch_token(void)
 {
 	FILE *instream = NULL;
 	int numchar;
-	size_t i = 0, len = MAXLEN;
+	size_t len = MAXLEN;
 	char **lineptr = malloc(sizeof(char) * MAXLEN);
-	char **token_str = NULL;
-	char **absolute_token = NULL;
+	char **token_str = malloc(sizeof(char) * MAXLEN);
 	char *exit_str = "exit";
 	char *delim = " ,;\t";
 
@@ -27,18 +26,20 @@ int fetch_token()
 	{
 		while ((*token_str = strtok(*lineptr++, delim)) != NULL)
 		{
-			if (strncmp(*token_str, exit_str, strlen(exit_str)) == 0)
+			if (strncmp(*token_str, exit_str, strlen(exit_str))
+					== 0)
 				_exit(EXIT_SUCCESS);
 
-			*absolute_token = which_command(*token_str);
-
-			printf("%s\n", absolute_token[0]);
-			printf("%s", PROMPT);
-
-			stat_exec(absolute_token, i);
+			if ((which_command(*token_str)) == EXIT_FAILURE)
+			{
+				perror("Which Error");
+				return (EXIT_FAILURE);
+			}
 		}
+		printf("%s", PROMPT);
 	}
 	free(lineptr);
+	free(token_str);
 	fclose(instream);
 	return (EXIT_SUCCESS);
 }
